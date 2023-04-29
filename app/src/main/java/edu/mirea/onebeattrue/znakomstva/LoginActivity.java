@@ -13,30 +13,29 @@ import edu.mirea.onebeattrue.znakomstva.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button loginButton;
-    private TextView registerTextView;
+    private ActivityLoginBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        View root = binding.getRoot();
+        setContentView(root);
 
         // Находим View
         EditText emailEditText = findViewById(R.id.emailEditText);
         EditText passwordEditText = findViewById(R.id.passwordEditText);
-        loginButton = findViewById(R.id.loginButton);
-        registerTextView = findViewById(R.id.registerTextView);
 
         // Устанавливаем обработчик нажатия на кнопку
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Обработка нажатия на кнопку входа
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             }
         });
 
         // Устанавливаем обработчик нажатия на текстовую ссылку для регистрации
-        registerTextView.setOnClickListener(new View.OnClickListener() {
+        binding.registerTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Создаем интент для перехода на RegistrationActivity
